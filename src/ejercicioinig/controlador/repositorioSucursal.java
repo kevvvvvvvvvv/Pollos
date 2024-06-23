@@ -1,23 +1,48 @@
 package ejercicioinig.controlador;
 
-import ejercicioinig.Vista.Sucursal;
+import ejercicioinig.modelo.Sucursal;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /*@author kevin*/
-public class repositorioSucursal {
+public class repositorioSucursal extends Repositorio<Sucursal>{
+
+    public static Repositorio obj;
     
-    private List<Sucursal> listSucu;
+    getDataSucursal ds;
     
-    public repositorioSucursal(){
-        listSucu = new ArrayList<Sucursal>();
-        getData();
+    private repositorioSucursal() {
+        list = new ArrayList<>();
+    }
+        
+    public static Repositorio getRepositorio() throws IOException{
+        if(obj== null){
+            obj = new repositorioSucursal();
+        }
+        return obj;
+    }   
+
+    @Override
+    public void cargarDatos() {
+        ds = new getDataSucursal();
+        try {
+            
+            list = ds.obtenerDatos();
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(repositorioSucursal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     
-    
-    private void getData(){
-        
+    public void mostrar(){
+        for(Sucursal s:list){
+            System.out.println(s.getIdSursal());
+        }
     }
     
 }

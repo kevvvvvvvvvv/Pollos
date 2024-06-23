@@ -4,9 +4,13 @@
  */
 package ejercicioinig.Vista;
 
-import ejercicioinig.Vista.NewClass;
+import ejercicioinig.controlador.RConnection;
+import ejercicioinig.controlador.getData;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
@@ -36,21 +40,23 @@ public class Empleado extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         newClass1 = new ejercicioinig.Vista.NewClass();
-        nombre1 = new javax.swing.JTextField();
-        newClass2 = new ejercicioinig.Vista.NewClass();
         nombre = new javax.swing.JTextField();
+        newClass2 = new ejercicioinig.Vista.NewClass();
+        apellidos = new javax.swing.JTextField();
         newClass3 = new ejercicioinig.Vista.NewClass();
-        nombre3 = new javax.swing.JTextField();
-        newClass4 = new ejercicioinig.Vista.NewClass();
-        nombre2 = new javax.swing.JTextField();
+        fenac = new javax.swing.JTextField();
+        n = new ejercicioinig.Vista.NewClass();
+        co = new javax.swing.JTextField();
         newClass5 = new ejercicioinig.Vista.NewClass();
-        nombre4 = new javax.swing.JTextField();
+        tel = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         newClass6 = new ejercicioinig.Vista.NewClass();
         jButton1 = new javax.swing.JButton();
         newClass7 = new ejercicioinig.Vista.NewClass();
         jButton3 = new javax.swing.JButton();
+        n1 = new ejercicioinig.Vista.NewClass();
+        ids = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -75,13 +81,13 @@ public class Empleado extends javax.swing.JFrame {
         newClass1.setRoundTopLeft(50);
         newClass1.setRoundTopRight(50);
 
-        nombre1.setForeground(new java.awt.Color(204, 204, 204));
-        nombre1.setText("Nombre");
-        nombre1.setBorder(null);
-        nombre1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        nombre1.addActionListener(new java.awt.event.ActionListener() {
+        nombre.setForeground(new java.awt.Color(204, 204, 204));
+        nombre.setText("Nombre");
+        nombre.setBorder(null);
+        nombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre1ActionPerformed(evt);
+                nombreActionPerformed(evt);
             }
         });
 
@@ -91,14 +97,14 @@ public class Empleado extends javax.swing.JFrame {
             newClass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newClass1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         newClass1Layout.setVerticalGroup(
             newClass1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newClass1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -108,12 +114,12 @@ public class Empleado extends javax.swing.JFrame {
         newClass2.setRoundTopLeft(50);
         newClass2.setRoundTopRight(50);
 
-        nombre.setForeground(new java.awt.Color(204, 204, 204));
-        nombre.setText("Apellidos");
-        nombre.setBorder(null);
-        nombre.addActionListener(new java.awt.event.ActionListener() {
+        apellidos.setForeground(new java.awt.Color(204, 204, 204));
+        apellidos.setText("Apellidos");
+        apellidos.setBorder(null);
+        apellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
+                apellidosActionPerformed(evt);
             }
         });
 
@@ -123,14 +129,14 @@ public class Empleado extends javax.swing.JFrame {
             newClass2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newClass2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         newClass2Layout.setVerticalGroup(
             newClass2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newClass2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -140,12 +146,12 @@ public class Empleado extends javax.swing.JFrame {
         newClass3.setRoundTopLeft(50);
         newClass3.setRoundTopRight(50);
 
-        nombre3.setForeground(new java.awt.Color(204, 204, 204));
-        nombre3.setText("Fecha de Nacimiento");
-        nombre3.setBorder(null);
-        nombre3.addActionListener(new java.awt.event.ActionListener() {
+        fenac.setForeground(new java.awt.Color(204, 204, 204));
+        fenac.setText("Fecha de Nacimiento");
+        fenac.setBorder(null);
+        fenac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre3ActionPerformed(evt);
+                fenacActionPerformed(evt);
             }
         });
 
@@ -155,46 +161,46 @@ public class Empleado extends javax.swing.JFrame {
             newClass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newClass3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(nombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fenac, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         newClass3Layout.setVerticalGroup(
             newClass3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newClass3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fenac, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        newClass4.setBackground(new java.awt.Color(255, 255, 255));
-        newClass4.setRoundBottomLeft(50);
-        newClass4.setRoundBottomRight(50);
-        newClass4.setRoundTopLeft(50);
-        newClass4.setRoundTopRight(50);
+        n.setBackground(new java.awt.Color(255, 255, 255));
+        n.setRoundBottomLeft(50);
+        n.setRoundBottomRight(50);
+        n.setRoundTopLeft(50);
+        n.setRoundTopRight(50);
 
-        nombre2.setForeground(new java.awt.Color(204, 204, 204));
-        nombre2.setText("Correo");
-        nombre2.setBorder(null);
-        nombre2.addActionListener(new java.awt.event.ActionListener() {
+        co.setForeground(new java.awt.Color(204, 204, 204));
+        co.setText("Correo");
+        co.setBorder(null);
+        co.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre2ActionPerformed(evt);
+                coActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout newClass4Layout = new javax.swing.GroupLayout(newClass4);
-        newClass4.setLayout(newClass4Layout);
-        newClass4Layout.setHorizontalGroup(
-            newClass4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newClass4Layout.createSequentialGroup()
+        javax.swing.GroupLayout nLayout = new javax.swing.GroupLayout(n);
+        n.setLayout(nLayout);
+        nLayout.setHorizontalGroup(
+            nLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(co, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
-        newClass4Layout.setVerticalGroup(
-            newClass4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(newClass4Layout.createSequentialGroup()
+        nLayout.setVerticalGroup(
+            nLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(co, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -204,12 +210,12 @@ public class Empleado extends javax.swing.JFrame {
         newClass5.setRoundTopLeft(50);
         newClass5.setRoundTopRight(50);
 
-        nombre4.setForeground(new java.awt.Color(204, 204, 204));
-        nombre4.setText("Teléfono");
-        nombre4.setBorder(null);
-        nombre4.addActionListener(new java.awt.event.ActionListener() {
+        tel.setForeground(new java.awt.Color(204, 204, 204));
+        tel.setText("Teléfono");
+        tel.setBorder(null);
+        tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre4ActionPerformed(evt);
+                telActionPerformed(evt);
             }
         });
 
@@ -219,22 +225,20 @@ public class Empleado extends javax.swing.JFrame {
             newClass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newClass5Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(nombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tel, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         newClass5Layout.setVerticalGroup(
             newClass5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newClass5Layout.createSequentialGroup()
                 .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(nombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 102, 0));
         jLabel1.setText("Insertar Empleado");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Simulacion15\\Downloads\\WhatsApp Image 2024-05-30 at 10.55.55 AM (4).jpeg")); // NOI18N
 
         newClass6.setBackground(new java.awt.Color(255, 102, 0));
         newClass6.setRoundBottomLeft(50);
@@ -267,7 +271,7 @@ public class Empleado extends javax.swing.JFrame {
             newClass6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newClass6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -305,6 +309,38 @@ public class Empleado extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        n1.setBackground(new java.awt.Color(255, 255, 255));
+        n1.setRoundBottomLeft(50);
+        n1.setRoundBottomRight(50);
+        n1.setRoundTopLeft(50);
+        n1.setRoundTopRight(50);
+
+        ids.setForeground(new java.awt.Color(204, 204, 204));
+        ids.setText("ID de la sucursal asociada");
+        ids.setBorder(null);
+        ids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout n1Layout = new javax.swing.GroupLayout(n1);
+        n1.setLayout(n1Layout);
+        n1Layout.setHorizontalGroup(
+            n1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(n1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(ids, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        n1Layout.setVerticalGroup(
+            n1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(n1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ids, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -320,7 +356,8 @@ public class Empleado extends javax.swing.JFrame {
                                 .addComponent(newClass2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(newClass3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(newClass5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(newClass4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(n, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(n1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(138, 138, 138)
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -339,6 +376,7 @@ public class Empleado extends javax.swing.JFrame {
                 .addComponent(newClass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(newClass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,9 +385,10 @@ public class Empleado extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(newClass5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(newClass4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(n, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(n1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newClass6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(newClass7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -375,39 +414,62 @@ public class Empleado extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
        /* LineBorder lineBorder =new LineBorder(Color.white, 111, true);
         nombre.setBorder(lineBorder );*/
         UIManager.put("TextComponent.arc",300);
+    }//GEN-LAST:event_apellidosActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
 
-    private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
+    private void coActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombre1ActionPerformed
+    }//GEN-LAST:event_coActionPerformed
 
-    private void nombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre2ActionPerformed
+    private void fenacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fenacActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombre2ActionPerformed
+    }//GEN-LAST:event_fenacActionPerformed
 
-    private void nombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre3ActionPerformed
+    private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombre3ActionPerformed
-
-    private void nombre4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombre4ActionPerformed
+    }//GEN-LAST:event_telActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try{
+            RConnection cone = new RConnection();
+            Connection conexion = cone.conectar();
+            getData gd = new getData();
+            long id = gd.generarId();
+            
+            String sa = ids.getText();
+            
+            PreparedStatement insertar = conexion.prepareStatement("insert into empleado values(?,?,?,?,?,?,?)");
+            insertar.setString(1,String.valueOf(id));
+            insertar.setString(2,nombre.getText());
+            insertar.setString(3,apellidos.getText());
+            insertar.setString(4,fenac.getText());
+            insertar.setString(5,tel.getText());
+            insertar.setString(6,co.getText());
+            
+            
+            
+            insertar.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Datos Registrados");
+            cone.desconectar();
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -420,44 +482,16 @@ public class Empleado extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Empleado().setVisible(true);
-            }
-        });
-    }
+    private void idsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idsActionPerformed
 
     NewClass redo= new NewClass();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField apellidos;
+    private javax.swing.JTextField co;
+    private javax.swing.JTextField fenac;
+    private javax.swing.JTextField ids;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -467,17 +501,15 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private ejercicioinig.Vista.NewClass n;
+    private ejercicioinig.Vista.NewClass n1;
     private ejercicioinig.Vista.NewClass newClass1;
     private ejercicioinig.Vista.NewClass newClass2;
     private ejercicioinig.Vista.NewClass newClass3;
-    private ejercicioinig.Vista.NewClass newClass4;
     private ejercicioinig.Vista.NewClass newClass5;
     private ejercicioinig.Vista.NewClass newClass6;
     private ejercicioinig.Vista.NewClass newClass7;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField nombre1;
-    private javax.swing.JTextField nombre2;
-    private javax.swing.JTextField nombre3;
-    private javax.swing.JTextField nombre4;
+    private javax.swing.JTextField tel;
     // End of variables declaration//GEN-END:variables
 }

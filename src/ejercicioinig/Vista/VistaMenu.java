@@ -56,7 +56,7 @@ public class VistaMenu extends javax.swing.JFrame {
         InsertarG.setBackground(new java.awt.Color(255, 102, 0));
         InsertarG.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 12)); // NOI18N
         InsertarG.setForeground(new java.awt.Color(255, 255, 204));
-        InsertarG.setText("Insertar Grupos");
+        InsertarG.setText("Insertar Sucursal");
         InsertarG.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0)));
         InsertarG.setBorderPainted(false);
         InsertarG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -69,7 +69,7 @@ public class VistaMenu extends javax.swing.JFrame {
         MostrarPG.setBackground(new java.awt.Color(255, 102, 0));
         MostrarPG.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 12)); // NOI18N
         MostrarPG.setForeground(new java.awt.Color(255, 255, 204));
-        MostrarPG.setText("Mostrar personas y Grupos");
+        MostrarPG.setText("Mostrar personas y sucursales");
         MostrarPG.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0)));
         MostrarPG.setBorderPainted(false);
         MostrarPG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -82,7 +82,7 @@ public class VistaMenu extends javax.swing.JFrame {
         Eliminar.setBackground(new java.awt.Color(255, 102, 0));
         Eliminar.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 12)); // NOI18N
         Eliminar.setForeground(new java.awt.Color(255, 255, 204));
-        Eliminar.setText("Eliminar Personas y Grupos");
+        Eliminar.setText("Eliminar personas y sucursales");
         Eliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0)));
         Eliminar.setBorderPainted(false);
         Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -108,7 +108,7 @@ public class VistaMenu extends javax.swing.JFrame {
         ModificarG.setBackground(new java.awt.Color(255, 102, 0));
         ModificarG.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 12)); // NOI18N
         ModificarG.setForeground(new java.awt.Color(255, 255, 204));
-        ModificarG.setText("Modificar grupos");
+        ModificarG.setText("Modificar sucursales");
         ModificarG.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0), new java.awt.Color(255, 102, 0)));
         ModificarG.setBorderPainted(false);
         ModificarG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -131,7 +131,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicioinig/Vista/pollo-feliz-logo-07B976E9BA-seeklogo.com.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicioinig/images/pollo-feliz-logo-07B976E9BA-seeklogo.com.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -194,7 +194,7 @@ public class VistaMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145))
+                .addContainerGap())
         );
 
         pack();
@@ -239,41 +239,6 @@ public class VistaMenu extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaMenu().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Eliminar;

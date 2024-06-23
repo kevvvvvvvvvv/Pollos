@@ -1,20 +1,36 @@
 
 package ejercicioinig.modelo;
 
+import java.util.List;
+
 /*@author kevin*/
 public class Sucursal {
     private long idSursal;
     private String direccion;
+    private String nombre;
     private String estado;
     private String telefono;
+    private List<Empleado> empleados;
 
-    public Sucursal(long idSursal, String direccion, String estado, String telefono) {
+    public Sucursal(long idSursal, String direccion, String nombre, String estado, String telefono) {
         this.idSursal = idSursal;
         this.direccion = direccion;
+        this.nombre = nombre;
         this.estado = estado;
         this.telefono = telefono;
     }
 
+    public Sucursal() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     public long getIdSursal() {
         return idSursal;
     }
