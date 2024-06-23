@@ -4,6 +4,7 @@
  */
 package ejercicioinig.Vista;
 
+import ejercicioinig.controlador.LogicaSucursal;
 import ejercicioinig.controlador.RConnection;
 import ejercicioinig.controlador.getData;
 import java.awt.Color;
@@ -448,25 +449,33 @@ public class Empleado extends javax.swing.JFrame {
         try{
             RConnection cone = new RConnection();
             Connection conexion = cone.conectar();
-            getData gd = new getData();
-            long id = gd.generarId();
+            LogicaSucursal sucu = new LogicaSucursal();
             
             String sa = ids.getText();
             
-            PreparedStatement insertar = conexion.prepareStatement("insert into empleado values(?,?,?,?,?,?,?)");
-            insertar.setString(1,String.valueOf(id));
-            insertar.setString(2,nombre.getText());
-            insertar.setString(3,apellidos.getText());
-            insertar.setString(4,fenac.getText());
-            insertar.setString(5,tel.getText());
-            insertar.setString(6,co.getText());
+            Long ids = Long.parseLong(sa);
             
+            if(sucu.evaluarIdS(ids)){
+                
+                PreparedStatement insertar = conexion.prepareStatement("insert into empleado values(?,?,?,?,?,?,?)");
+                insertar.setString(1,String.valueOf(sucu.generarId()));
+                insertar.setString(2,nombre.getText());
+                insertar.setString(3,apellidos.getText());
+                insertar.setString(4,fenac.getText());
+                insertar.setString(5,tel.getText());
+                insertar.setString(6,co.getText());
+                insertar.setString(7,sa);
+                
+                insertar.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Datos Registrados");
+                cone.desconectar();
+                
+            }else{
+                JOptionPane.showMessageDialog(null,"No se ha encontrado una sucursal con esa ID");
+            }
             
-            
-            insertar.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Datos Registrados");
-            cone.desconectar();
-            
+        }catch(NumberFormatException f){
+            JOptionPane.showMessageDialog(null,"Necesitas ingresar valores válidos");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }

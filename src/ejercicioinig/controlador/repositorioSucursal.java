@@ -17,7 +17,7 @@ public class repositorioSucursal extends Repositorio<Sucursal>{
     getDataSucursal ds;
     
     private repositorioSucursal() {
-        list = new ArrayList<>();
+        
     }
         
     public static Repositorio getRepositorio() throws IOException{
@@ -31,7 +31,6 @@ public class repositorioSucursal extends Repositorio<Sucursal>{
     public void cargarDatos() {
         ds = new getDataSucursal();
         try {
-            
             list = ds.obtenerDatos();
         } catch (SQLException ex) {
             

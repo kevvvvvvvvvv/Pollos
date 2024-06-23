@@ -3,7 +3,7 @@ package ejercicioinig.modelo;
 /*@author kevin*/
 
 public class Empleado {
-    private int idEmpleado;
+    private long idEmpleado;
     private String nombre;
     private String apellido;
     private String date;
@@ -11,7 +11,7 @@ public class Empleado {
     private String correo;
     private long idSucursal;
 
-    public Empleado(int idEmpleado, String nombre, String apellido, String date, String telefono, String correo, long idSucursal) {
+    public Empleado(long idEmpleado, String nombre, String apellido, String date, String telefono, String correo, long idSucursal) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -21,7 +21,7 @@ public class Empleado {
         this.idSucursal = idSucursal;
     }
 
-    public int getIdEmpleado() {
+    public long getIdEmpleado() {
         return idEmpleado;
     }
 

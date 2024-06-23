@@ -25,8 +25,6 @@ public class EjercicioInIG {
         VistaMenu vm = new VistaMenu();
         vm.setVisible(true);
         
-        
-        Repositorio<Sucursal> rp = repositorioSucursal.getRepositorio();
     }
     
 }
